@@ -7,6 +7,10 @@
 <meta name="theme-color" content="#0b5cad">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Veien til førerkort klasse B</title>
 <style>
 :root{
@@ -692,6 +696,7 @@ Det gir deg færre krav enn yngre elever: du slipper <b>trafikalt grunnkurs (17 
   document.getElementById('reset').addEventListener('click',function(){
     if(confirm(state.lang==='en'?EN.confirm_reset:NB_CONFIRM)){ state.choices={}; state.done={}; delete state.filterOpen; cur='1'; save(); render(); }
   });
+  if('serviceWorker' in navigator && /^https?:/.test(location.protocol)){ window.addEventListener('load',function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); }); }
   initCur(); applyTheme(); applyLang(); render();
   if(!state.disc) showDisc();
 })();
